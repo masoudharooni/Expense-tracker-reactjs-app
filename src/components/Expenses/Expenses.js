@@ -1,7 +1,7 @@
 import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from '../UI/Card';
-function Expenses() {
+const Expenses = () => {
   const expense = [
     {
       id: 'e1',
@@ -32,6 +32,6 @@ function Expenses() {
       <ExpenseItem expense={expense[3]} />
     </Card>
   );
-}
+};
 
 export default Expenses;
