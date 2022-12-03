@@ -18,6 +18,12 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value);
   };
 
+  const clearInputValues = () => {
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
+  };
+
   const submitHandler = e => {
     e.preventDefault();
 
@@ -26,6 +32,7 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
+    clearInputValues();
     console.log(expenseData);
   };
 
@@ -36,6 +43,7 @@ const ExpenseForm = () => {
           <label>Title</label>
           <input
             type="text"
+            value={enteredTitle}
             placeholder="Enter title of the expense"
             required
             onChange={titleChangeHandler}
@@ -48,6 +56,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
             placeholder="Enter amount of the expense"
             required
             onChange={amountChangeHandler}
@@ -60,6 +69,7 @@ const ExpenseForm = () => {
             type="date"
             min="2019-01-12"
             max="2022-12-20"
+            value={enteredDate}
             required
             onChange={dateChangeHandler}
           />
