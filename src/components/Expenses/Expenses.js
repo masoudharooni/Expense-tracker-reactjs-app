@@ -18,8 +18,10 @@ const Expenses = props => {
       {selectedYear != ''
         ? props.expenses
             .filter(expense => expense.date.getFullYear() == selectedYear)
-            .map(expense => <ExpenseItem expense={expense} />)
-        : props.expenses.map(expense => <ExpenseItem expense={expense} />)}
+            .map(expense => <ExpenseItem key={expense.id} expense={expense} />)
+        : props.expenses.map(expense => (
+            <ExpenseItem key={expense.id} expense={expense} />
+          ))}
     </Card>
   );
 };
