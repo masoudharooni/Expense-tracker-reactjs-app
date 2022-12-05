@@ -4,9 +4,8 @@ import './Expenses.css';
 import Card from '../UI/Card';
 import ExpenseFilter from './ExpenseFilter';
 const Expenses = props => {
-  const [selectedYear, setSelectedYear] = useState('2020');
+  const [selectedYear, setSelectedYear] = useState('');
   const yearChangeHandler = year => {
-    console.log(typeof year, year);
     setSelectedYear(year);
   };
   return (
@@ -15,9 +14,12 @@ const Expenses = props => {
         selected={selectedYear}
         onSaveFilteredYear={yearChangeHandler}
       />
-      {props.expenses.map(expense => (
-        <ExpenseItem expense={expense} />
-      ))}
+
+      {selectedYear != ''
+        ? props.expenses
+            .filter(expense => expense.date.getFullYear() == selectedYear)
+            .map(expense => <ExpenseItem expense={expense} />)
+        : props.expenses.map(expense => <ExpenseItem expense={expense} />)}
     </Card>
   );
 };
