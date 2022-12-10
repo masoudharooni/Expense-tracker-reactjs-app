@@ -1,7 +1,7 @@
 import React from 'react';
 import './ExpenseList.css';
 import ExpenseItem from './ExpenseItem';
-
+import './ExpenseList.css';
 const ExpenseList = props => {
   const filteredExpenses =
     props.selectedYear != ''
@@ -18,7 +18,7 @@ const ExpenseList = props => {
     ));
   };
 
-  return <div>{showExpenseContent()}</div>;
+  return <div className="expense-list">{showExpenseContent()}</div>;
 };
 
 export default ExpenseList;
