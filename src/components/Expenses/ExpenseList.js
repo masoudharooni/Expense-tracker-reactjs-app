@@ -1,7 +1,6 @@
 import React from 'react';
 import './ExpenseList.css';
 import ExpenseItem from './ExpenseItem';
-import './ExpenseList.css';
 const ExpenseList = props => {
   const filteredExpenses =
     props.selectedYear != ''
@@ -9,6 +8,8 @@ const ExpenseList = props => {
           expense => expense.date.getFullYear() == props.selectedYear
         )
       : props.expenses.filter(exp => true);
+
+  props.onSaveFilteredExpenses(filteredExpenses);
 
   const showExpenseContent = () => {
     if (filteredExpenses.length === 0)
